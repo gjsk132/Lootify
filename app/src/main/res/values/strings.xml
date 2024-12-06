@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">LOOTIFY</string>
+    <string name="small_btn_text">NULL</string>
+    <string name="contents">contents</string>
 </resources>
