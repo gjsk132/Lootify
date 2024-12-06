@@ -3,5 +3,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="textBasicColor">#292929</color>
-    <color name="titleBackgroundColor">#715D4C</color>
+    <color name="titleBackgroundColor">#B3715D4C</color>
+    <color name="lightYellow">#FFD86F</color>
+    <color name="darkYellow">#B3EA8800</color>
+    <color name="lightGreen">#B5E5B3</color>
+    <color name="darkGreen">#08A800</color>
+    <color name="gray">#C6C6C6</color>
+    <color name="lightBlack">#B3000000</color>
+    <color name="lightBrown">#B3B69375</color>
+    <color name="red">#D10000</color>
+    <color name="blue">#007CFF</color>
 </resources>
