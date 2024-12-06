@@ -1,0 +1,26 @@
+name: Create Feature Issue
+description: issue!
+title: "[Feature] "
+body:
+  - type: textarea
+    id: new-feature
+    attributes:
+      label: 작업할 기능💡
+      description: 해당 이슈에서 작업할 기능
+    validations:
+      required: true
+  - type: textarea
+    id: todo
+    attributes:
+      label: Todo
+      description: 작업사항을 진행하기 위해 필요한 과정
+      value: |
+        - [ ] 
+	- [ ] 
+	- [ ] 
+  - type: textarea
+    id: etc
+    attributes:
+      label: 기타사항
+      description: 추가로 기록이 필요한 경우 작성해주세요! ( 참고 사항 등 )
+      placeholder: 달력 라이브러리는 Android Ver 12 이상부터 가능하다.
