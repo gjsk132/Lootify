@@ -16,8 +16,6 @@ body:
       description: 작업사항을 진행하기 위해 필요한 과정
       value: |
         - [ ] 
-	- [ ] 
-	- [ ] 
   - type: textarea
     id: etc
     attributes:
