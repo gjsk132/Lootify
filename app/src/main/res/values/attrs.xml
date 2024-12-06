@@ -3,9 +3,6 @@
     <declare-styleable name="SmallButton">
         <attr name="text" format="string"/>
         <attr name="text_color" format="color"/>
-        <attr name="enabled" format="enum">
-            <enum name="visible" value = "1"/>
-            <enum name="invisible" value = "0"/>
-        </attr>
+        <attr name="enable" format="boolean"/>
     </declare-styleable>
 </resources>
