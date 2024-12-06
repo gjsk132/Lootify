@@ -1,5 +1,5 @@
-name: Create Feature Issue
-description: issue!
+name: Feature Report
+description: Create issue!
 title: "[Feature] "
 body:
   - type: textarea
