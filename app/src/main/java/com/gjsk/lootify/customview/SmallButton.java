@@ -1,4 +1,4 @@
-package com.gjsk.lootify.title;
+package com.gjsk.lootify.customview;
 
 import android.content.Context;
 import android.content.res.TypedArray;

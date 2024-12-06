@@ -29,11 +29,22 @@
             android:textColor="@color/white"
             android:textSize="65sp" />
 
-        <com.gjsk.lootify.title.SmallButton
-            android:layout_width="145dp"
-            android:layout_height="45dp"
-            app:text_color="@color/white"
-            app:text="find"/>
+        <com.gjsk.lootify.customview.SmallButton
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:text_color="@color/textBasicColor"
+            app:enable="true"
+            android:layout_marginBottom="20dp"
+            app:text="JOIN"/>
+
+        <com.gjsk.lootify.customview.SmallButton
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:text_color="@color/textBasicColor"
+            app:enable="false"
+            app:text="FIND"/>
 
     </LinearLayout>
 

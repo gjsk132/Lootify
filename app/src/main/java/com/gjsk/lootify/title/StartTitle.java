@@ -5,15 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.gjsk.lootify.databinding.ActivityStartTitleBinding;
-
 public class StartTitle extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        com.gjsk.lootify.databinding.ActivityStartTitleBinding binding = ActivityStartTitleBinding.inflate(getLayoutInflater());
+        com.gjsk.lootify.databinding.ActivityStartTitleBinding binding = com.gjsk.lootify.databinding.ActivityStartTitleBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.startScreen.setOnClickListener(v->{
