@@ -7,7 +7,8 @@
     <color name="lightYellow">#FFD86F</color>
     <color name="darkYellow">#B3EA8800</color>
     <color name="lightGreen">#B5E5B3</color>
-    <color name="darkGreen">#08A800</color>
+    <color name="darkGreen">#FF08A800</color>
+    <color name="midGreen">#B308A800</color>
     <color name="gray">#C6C6C6</color>
     <color name="lightBlack">#B3000000</color>
     <color name="lightBrown">#B3B69375</color>
