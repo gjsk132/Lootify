@@ -78,7 +78,7 @@ public class SmallButton extends FrameLayout {
         smallButton.setAlpha(enabled ? 1f : 0.7f);
     }
 
-    private void setText(String textString) {
+    public void setText(String textString) {
         text.setText(textString);
 
         int color = setButtonColor(textString);

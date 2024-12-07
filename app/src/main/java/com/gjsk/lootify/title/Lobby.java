@@ -3,8 +3,9 @@ package com.gjsk.lootify.title;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.Toast;
-
+import android.widget.LinearLayout;
+import android.widget.Toast;;import com.gjsk.lootify.R;
+import com.gjsk.lootify.customview.DialogBase;
 import com.gjsk.lootify.customview.SmallButton;
 
 public class Lobby extends AppCompatActivity {
@@ -16,11 +17,22 @@ public class Lobby extends AppCompatActivity {
         com.gjsk.lootify.databinding.ActivityLobbyBinding binding = com.gjsk.lootify.databinding.ActivityLobbyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        SmallButton roomFindButton = binding.roomFindButton;
+        DialogBase dialogBase = binding.dialogBase;
 
-        roomFindButton.setOnClickListener(v->{
-            Toast toast = Toast.makeText(getApplicationContext(), "Finding Room...",Toast.LENGTH_SHORT);
+        addButtons(dialogBase);
+    }
+
+    private void addButtons(DialogBase dialogBase) {
+        LinearLayout buttonContents = findViewById(R.id.button_contents);
+
+        SmallButton findButton = new SmallButton(this);
+        findButton.setText("FIND");
+        findButton.setEnabled(true);
+        findButton.setOnClickListener(v -> {
+            Toast toast = Toast.makeText(getApplicationContext(), "Finding Room...", Toast.LENGTH_SHORT);
             toast.show();
         });
+
+        buttonContents.addView(findButton);
     }
 }

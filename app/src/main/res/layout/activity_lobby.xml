@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/titleBackgroundColor">
@@ -28,18 +29,12 @@
             android:textSize="65sp" />
 
         <com.gjsk.lootify.customview.DialogBase
+            android:id="@+id/dialog_base"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:sub_title="LOBBY"
-            app:add_icon_visible="false"/>
-
-        <com.gjsk.lootify.customview.SmallButton
-            android:id="@+id/room_find_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:text_color="@color/textBasicColor"
-            app:enable="true"
-            app:text="FIND"/>
+            app:add_icon_visible="false"
+            tools:ignore="InvalidId" />
 
     </LinearLayout>
 
