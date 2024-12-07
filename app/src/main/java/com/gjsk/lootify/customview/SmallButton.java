@@ -2,7 +2,6 @@ package com.gjsk.lootify.customview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,7 +78,7 @@ public class SmallButton extends FrameLayout {
         smallButton.setAlpha(enabled ? 1f : 0.7f);
     }
 
-    public void setText(String textString) {
+    private void setText(String textString) {
         text.setText(textString);
 
         int color = setButtonColor(textString);
@@ -122,7 +121,7 @@ public class SmallButton extends FrameLayout {
                 return R.color.midGreen;
 
             default:
-                return R.drawable.white_frame;
+                return R.drawable.white_frame_mid;
         }
     }
 }

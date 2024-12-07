@@ -2,4 +2,6 @@
     <string name="app_name">LOOTIFY</string>
     <string name="small_btn_text">NULL</string>
     <string name="contents">contents</string>
+    <string name="description">null</string>
+    <string name="sub_title">Sub Title</string>
 </resources>

@@ -5,4 +5,10 @@
         <attr name="text_color" format="color"/>
         <attr name="enable" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="DialogBase">
+        <attr name="sub_title" format="string"/>
+        <attr name="description" format="string"/>
+        <attr name="add_icon_visible" format="boolean"/>
+    </declare-styleable>
 </resources>
