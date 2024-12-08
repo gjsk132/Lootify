@@ -17,6 +17,7 @@ public class DialogBase extends LinearLayout {
     TextView description;
     ImageView addIcon;
     FrameLayout dialogContents;
+    View buttonLine;
     LinearLayout buttonContents;
 
     public DialogBase(Context context){
@@ -46,6 +47,7 @@ public class DialogBase extends LinearLayout {
         description = (TextView) findViewById(R.id.description);
         addIcon = (ImageView) findViewById(R.id.icon);
         dialogContents = (FrameLayout) findViewById(R.id.dialog_contents);
+        buttonLine = (View) findViewById(R.id.button_line);
         buttonContents = (LinearLayout) findViewById(R.id.button_contents);
     }
 
@@ -63,10 +65,12 @@ public class DialogBase extends LinearLayout {
         String subTitleString = typedArray.getString(R.styleable.DialogBase_sub_title);
         String descriptionString = typedArray.getString(R.styleable.DialogBase_description);
         boolean isAddIcon = typedArray.getBoolean(R.styleable.DialogBase_add_icon_visible, false);
+        boolean isButtons = typedArray.getBoolean(R.styleable.DialogBase_is_buttons, false);
 
         setTitle(subTitleString);
         setDescription(descriptionString);
         setIconVisibility(isAddIcon);
+        setButtonsVisibility(isButtons);
 
         typedArray.recycle();
     }
@@ -80,10 +84,16 @@ public class DialogBase extends LinearLayout {
     }
 
     private void setIconVisibility(boolean isAddIcon){
-        if(isAddIcon){
-            addIcon.setVisibility(View.VISIBLE);
+        addIcon.setVisibility(isAddIcon ? View.VISIBLE : View.GONE);
+    }
+
+    private void setButtonsVisibility(boolean isButtons){
+        if(isButtons){
+            buttonLine.setVisibility(View.VISIBLE);
+            buttonContents.setVisibility(View.VISIBLE);
         }else{
-            addIcon.setVisibility(View.GONE);
+            buttonLine.setVisibility(View.GONE);
+            buttonContents.setVisibility(View.GONE);
         }
     }
 }
