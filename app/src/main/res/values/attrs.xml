@@ -10,5 +10,6 @@
         <attr name="sub_title" format="string"/>
         <attr name="description" format="string"/>
         <attr name="add_icon_visible" format="boolean"/>
+        <attr name="is_buttons" format="boolean"/>
     </declare-styleable>
 </resources>
