@@ -13,29 +13,82 @@
         android:scaleType="centerCrop"
         android:src="@drawable/lobby_background_no_animation" />
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:gravity="center">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/labrada"
+            android:gravity="center"
             android:text="@string/app_name"
             android:textColor="@color/white"
-            android:textSize="65sp" />
+            android:textSize="65sp"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.gjsk.lootify.customview.DialogBase
             android:id="@+id/dialog_base"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:sub_title="LOBBY"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
             app:add_icon_visible="false"
-            tools:ignore="InvalidId" />
+            app:is_buttons="true"
+            app:layout_constraintHeight_percent="0.6"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:sub_title="LOBBY"
+            tools:layout_editor_absoluteX="0dp" />
 
-    </LinearLayout>
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:stretchColumns="0,1"
+            android:visibility="visible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dialog_base">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp">
+
+                <TextView/>
+
+                <com.gjsk.lootify.customview.SmallButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    app:enable="true"
+                    app:text_color="@color/white"
+                    app:text="CREATE MAP" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <com.gjsk.lootify.customview.SmallButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="end"
+                    app:enable="true"
+                    app:text_color="@color/white"
+                    app:text="HISTORY" />
+
+                <com.gjsk.lootify.customview.SmallButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="start"
+                    app:enable="true"
+                    app:text_color="@color/white"
+                    app:text="MY MAP" />
+
+            </TableRow>
+
+
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
