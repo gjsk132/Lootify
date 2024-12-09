@@ -1,4 +1,4 @@
-package com.gjsk.lootify.MapCreator;
+package com.gjsk.lootify.mapCreator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
