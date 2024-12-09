@@ -57,6 +57,7 @@
                 <TextView/>
 
                 <com.gjsk.lootify.customview.SmallButton
+                    android:id="@+id/create_map_button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
@@ -69,6 +70,7 @@
             <TableRow>
 
                 <com.gjsk.lootify.customview.SmallButton
+                    android:id="@+id/history_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="end"
@@ -77,6 +79,7 @@
                     app:text="HISTORY" />
 
                 <com.gjsk.lootify.customview.SmallButton
+                    android:id="@+id/my_map_button"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="start"

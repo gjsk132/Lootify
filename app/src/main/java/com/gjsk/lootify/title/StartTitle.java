@@ -14,7 +14,7 @@ public class StartTitle extends AppCompatActivity {
         com.gjsk.lootify.databinding.ActivityStartTitleBinding binding = com.gjsk.lootify.databinding.ActivityStartTitleBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.startScreen.setOnClickListener(v->{
+        binding.startScreen.setOnClickListener(view->{
             Intent intent = new Intent(StartTitle.this, Lobby.class);
             startActivity(intent);
         });
