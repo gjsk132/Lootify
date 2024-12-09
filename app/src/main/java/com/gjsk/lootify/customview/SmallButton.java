@@ -2,12 +2,13 @@ package com.gjsk.lootify.customview;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import com.gjsk.lootify.R;
 
@@ -79,7 +80,9 @@ public class SmallButton extends FrameLayout {
 
     public void setText(String textString) {
         text.setText(textString);
-        smallButton.setBackgroundResource(setButtonColor(textString));
+
+        int color = setButtonColor(textString);
+        smallButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), color));
     }
 
     private void setTextColor(int textColor) {
@@ -92,33 +95,33 @@ public class SmallButton extends FrameLayout {
             case "FIND":
             case "SELECT":
             case "NEXT" :
-                return R.drawable.light_yellow_button;
+                return R.color.lightYellow;
 
             case "JOIN":
             case "LOAD":
             case "SAVE" :
-                return R.drawable.light_green_button;
+                return R.color.lightGreen;
 
             case "CANCLE":
             case "BEFORE":
             case "BACK":
-                return R.drawable.gray_button;
+                return R.color.gray;
 
             case "SAVE MAP":
             case "CREATE MAP":
-                return R.drawable.light_black_button;
+                return R.color.lightBlack;
 
             case "MY MAP":
-                return R.drawable.light_brown_button;
+                return R.color.lightBrown;
 
             case "HISTORY":
-                return R.drawable.dark_yellow_button;
+                return R.color.darkYellow;
 
             case "PREVIEW":
-                return R.drawable.mid_green_button;
+                return R.color.midGreen;
 
             default:
-                return R.drawable.white_frame;
+                return R.drawable.white_frame_mid;
         }
     }
 }
