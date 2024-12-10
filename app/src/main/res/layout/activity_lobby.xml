@@ -22,7 +22,7 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="70dp"
             android:fontFamily="@font/labrada"
             android:gravity="center"
             android:text="@string/app_name"
@@ -32,11 +32,12 @@
 
         <com.gjsk.lootify.customview.DialogBase
             android:id="@+id/dialog_base"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:add_icon_visible="false"
             app:is_buttons="true"
-            app:layout_constraintHeight_percent="0.6"
+            app:layout_constraintHeight_percent="0.5"
             app:layout_constraintTop_toBottomOf="@+id/textView"
             app:sub_title="LOBBY"
             tools:layout_editor_absoluteX="0dp" />

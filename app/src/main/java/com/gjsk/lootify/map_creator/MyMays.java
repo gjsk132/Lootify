@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.gjsk.lootify.BaseActivity;
 import com.gjsk.lootify.R;
 
-public class MyMays extends AppCompatActivity {
+public class MyMays extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

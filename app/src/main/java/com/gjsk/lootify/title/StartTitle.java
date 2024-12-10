@@ -1,11 +1,11 @@
 package com.gjsk.lootify.title;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 
-public class StartTitle extends AppCompatActivity {
+import com.gjsk.lootify.BaseActivity;
+
+public class StartTitle extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -14,7 +14,7 @@ public class StartTitle extends AppCompatActivity {
         com.gjsk.lootify.databinding.ActivityStartTitleBinding binding = com.gjsk.lootify.databinding.ActivityStartTitleBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.startScreen.setOnClickListener(view->{
+        binding.startScreen.setOnClickListener(view -> {
             Intent intent = new Intent(StartTitle.this, Lobby.class);
             startActivity(intent);
         });

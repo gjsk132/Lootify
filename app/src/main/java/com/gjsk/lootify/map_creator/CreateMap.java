@@ -1,18 +1,15 @@
 package com.gjsk.lootify.map_creator;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Dialog;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.gjsk.lootify.R;
+import com.gjsk.lootify.BaseActivity;
 import com.gjsk.lootify.customview.CreateMapSettingButton;
-import com.gjsk.lootify.customview.SmallButton;
+import com.gjsk.lootify.customview.DialogBase;
 import com.gjsk.lootify.databinding.ActivityCreateMapBinding;
 
-public class CreateMap extends AppCompatActivity {
+public class CreateMap extends BaseActivity {
 
     private ActivityCreateMapBinding binding;
 
@@ -28,6 +25,9 @@ public class CreateMap extends AppCompatActivity {
         CreateMapSettingButton positionSettingButton = binding.positionSettingButton;
 
         treasureSettingButton.setOnClickListener(view ->{
+
+            showCustomDialog();
+
             treasureSettingButton.completeSetting();
             updateButtonStates();
         });
@@ -71,5 +71,15 @@ public class CreateMap extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    private void showCustomDialog(){
+        Dialog dialog = new Dialog(this);
+
+        DialogBase dialogBase = new DialogBase(this);
+        dialog.setContentView(dialogBase);
+
+        dialog.setCancelable(true);
+        dialog.show();
     }
 }

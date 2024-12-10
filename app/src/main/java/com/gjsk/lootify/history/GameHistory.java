@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.gjsk.lootify.BaseActivity;
 import com.gjsk.lootify.R;
 
-public class GameHistory extends AppCompatActivity {
+public class GameHistory extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
