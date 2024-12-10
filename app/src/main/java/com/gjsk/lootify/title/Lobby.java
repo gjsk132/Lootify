@@ -9,13 +9,13 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.gjsk.lootify.history.GameHistory;
-import com.gjsk.lootify.mapCreator.CreateMap;
 import com.gjsk.lootify.R;
 import com.gjsk.lootify.customview.DialogBase;
 import com.gjsk.lootify.customview.SmallButton;
 import com.gjsk.lootify.databinding.ActivityLobbyBinding;
-import com.gjsk.lootify.mapCreator.MyMays;
+import com.gjsk.lootify.history.GameHistory;
+import com.gjsk.lootify.map_creator.CreateMap;
+import com.gjsk.lootify.map_creator.MyMays;
 
 public class Lobby extends AppCompatActivity {
 
@@ -44,13 +44,13 @@ public class Lobby extends AppCompatActivity {
             setStartActivity(CreateMap.class);
         });
 
-//        historyButton.setOnClickListener(view -> {
-//            setStartActivity(GameHistory.class);
-//        });
-//
-//        myMapButton.setOnClickListener(view -> {
-//            setStartActivity(MyMays.class);
-//        });
+        historyButton.setOnClickListener(view -> {
+            setStartActivity(GameHistory.class);
+        });
+
+        myMapButton.setOnClickListener(view -> {
+            setStartActivity(MyMays.class);
+        });
 
     }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/startScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,30 +15,92 @@
         android:scaleType="centerCrop"
         android:src="@drawable/create_map_background"/>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_marginHorizontal="50dp"
+        android:gravity="center|top"
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/labrada"
-            android:text="@string/app_name"
-            android:textColor="@color/textBasicColor"
-            android:layout_marginTop="130dp"
-            android:layout_marginBottom="280dp"
-            android:textSize="65sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/textView2"
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inria_sans"
-            android:text="Touch to Start"
+            android:shadowColor="@color/black"
+            android:shadowDy="10"
+            android:shadowRadius="15"
+            android:text="Create\nMap"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="55sp"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingVertical="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            <com.gjsk.lootify.customview.CreateMapSettingButton
+                android:id="@+id/treasure_setting_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                app:main_text="Treasure"
+                app:setting_cnt="0"
+                app:sub_text="Step1" />
+
+            <com.gjsk.lootify.customview.CreateMapSettingButton
+                android:id="@+id/test_setting_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                app:main_text="Test"
+                app:setting_cnt="0"
+                app:sub_text="Step2" />
+
+            <com.gjsk.lootify.customview.CreateMapSettingButton
+                android:id="@+id/position_setting_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:main_text="Position"
+                app:setting_cnt="0"
+                app:sub_text="Step3" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <com.gjsk.lootify.customview.SmallButton
+                android:id="@+id/save_map_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:enable="false"
+                app:text="SAVE MAP"
+                app:text_color="@color/white" />
+
+            <com.gjsk.lootify.customview.SmallButton
+                android:id="@+id/preview_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:enable="false"
+                app:text="PREVIEW"
+                app:text_color="@color/white" />
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
