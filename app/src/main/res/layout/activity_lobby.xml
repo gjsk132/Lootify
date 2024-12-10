@@ -33,6 +33,7 @@
         <com.gjsk.lootify.customview.DialogBase
             android:id="@+id/dialog_base"
             android:layout_marginTop="15dp"
+            android:layout_marginHorizontal="30dp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:add_icon_visible="false"
