@@ -3,7 +3,9 @@ package com.gjsk.lootify.map_creator;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gjsk.lootify.R;
 import com.gjsk.lootify.customview.CreateMapSettingButton;
@@ -31,13 +33,23 @@ public class CreateMap extends AppCompatActivity {
         });
 
         testSettingButton.setOnClickListener(view ->{
-            testSettingButton.completeSetting();
-            updateButtonStates();
+            if (treasureSettingButton.isSetting()){
+                testSettingButton.completeSetting();
+                updateButtonStates();
+            }else{
+                Toast toast = Toast.makeText(getApplicationContext(), "Treasure 먼저 생성하기!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
         });
 
         positionSettingButton.setOnClickListener(view -> {
-            positionSettingButton.completeSetting();
-            updateButtonStates();
+            if (testSettingButton.isSetting()) {
+                positionSettingButton.completeSetting();
+                updateButtonStates();
+            }else{
+                Toast toast = Toast.makeText(getApplicationContext(), "Test 먼저 생성하기!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
         });
     }
 
