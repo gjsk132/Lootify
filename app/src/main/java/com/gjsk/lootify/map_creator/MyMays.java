@@ -1,4 +1,4 @@
-package com.gjsk.lootify.mapCreator;
+package com.gjsk.lootify.map_creator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.gjsk.lootify.R;
 
-public class CreateMap extends AppCompatActivity {
+public class MyMays extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_map);
+        setContentView(R.layout.activity_my_mays);
     }
 }

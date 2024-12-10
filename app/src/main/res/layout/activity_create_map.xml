@@ -18,12 +18,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="35dp"
+        android:layout_marginHorizontal="50dp"
         android:gravity="center|top"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView2"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="@font/inria_sans"
@@ -33,25 +34,52 @@
             android:text="Create\nMap"
             android:textColor="@color/white"
             android:textSize="55sp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
-            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="30dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:paddingVertical="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+            app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+            <com.gjsk.lootify.customview.CreateMapSettingButton
+                android:id="@+id/treasure_setting_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                app:main_text="Treasure"
+                app:setting_cnt="0"
+                app:sub_text="Step1" />
+
+            <com.gjsk.lootify.customview.CreateMapSettingButton
+                android:id="@+id/test_setting_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="30dp"
+                app:main_text="Test"
+                app:setting_cnt="0"
+                app:sub_text="Step2" />
+
+            <com.gjsk.lootify.customview.CreateMapSettingButton
+                android:id="@+id/position_setting_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:main_text="Position"
+                app:setting_cnt="0"
+                app:sub_text="Step3" />
 
 
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="50dp"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+            app:layout_constraintBottom_toBottomOf="parent">
 
             <com.gjsk.lootify.customview.SmallButton
                 android:id="@+id/save_map_button"
