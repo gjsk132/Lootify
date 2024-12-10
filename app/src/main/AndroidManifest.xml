@@ -13,19 +13,19 @@
         android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".mapCreator.MyMays"
+            android:name=".map_creator.MyMays"
             android:exported="false" />
         <activity
             android:name=".history.GameHistory"
             android:exported="false" />
         <activity
-            android:name=".mapCreator.CreateMap"
+            android:name=".title.StartTitle"
             android:exported="false" />
         <activity
             android:name=".title.Lobby"
             android:exported="false" />
         <activity
-            android:name=".title.StartTitle"
+            android:name=".map_creator.CreateMap"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

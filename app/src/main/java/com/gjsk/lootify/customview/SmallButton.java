@@ -81,8 +81,8 @@ public class SmallButton extends FrameLayout {
     public void setText(String textString) {
         text.setText(textString);
 
-        int color = setButtonColor(textString);
-        smallButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), color));
+        int colorID = setButtonColor(textString);
+        smallButton.setBackgroundTintList(ContextCompat.getColorStateList(getContext(), colorID));
     }
 
     private void setTextColor(int textColor) {
@@ -91,37 +91,15 @@ public class SmallButton extends FrameLayout {
 
     private int setButtonColor(String textString){
 
-        switch (Objects.requireNonNull(textString)){
-            case "FIND":
-            case "SELECT":
-            case "NEXT" :
-                return R.color.lightYellow;
-
-            case "JOIN":
-            case "LOAD":
-            case "SAVE" :
-                return R.color.lightGreen;
-
-            case "CANCLE":
-            case "BEFORE":
-            case "BACK":
-                return R.color.gray;
-
-            case "SAVE MAP":
-            case "CREATE MAP":
-                return R.color.lightBlack;
-
-            case "MY MAP":
-                return R.color.lightBrown;
-
-            case "HISTORY":
-                return R.color.darkYellow;
-
-            case "PREVIEW":
-                return R.color.midGreen;
-
-            default:
-                return R.drawable.white_frame_mid;
-        }
+        return switch (Objects.requireNonNull(textString)) {
+            case "FIND", "SELECT", "NEXT" -> R.color.lightYellow;
+            case "JOIN", "LOAD", "SAVE" -> R.color.lightGreen;
+            case "CANCLE", "BEFORE", "BACK" -> R.color.gray;
+            case "SAVE MAP", "CREATE MAP" -> R.color.lightBlack;
+            case "MY MAP" -> R.color.lightBrown;
+            case "HISTORY" -> R.color.darkYellow;
+            case "PREVIEW" -> R.color.midGreen;
+            default -> R.drawable.white_frame_mid;
+        };
     }
 }
