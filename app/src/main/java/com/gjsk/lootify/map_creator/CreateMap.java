@@ -42,12 +42,6 @@ public class CreateMap extends AppCompatActivity {
     }
 
     private void updateButtonStates(){
-        boolean allSettingsComplete = areAllSettingsComplete(
-                binding.treasureSettingButton,
-                binding.testSettingButton,
-                binding.positionSettingButton
-        );
-
         boolean anySettingsComplete = areAnySettingsComplete(
                 binding.treasureSettingButton,
                 binding.testSettingButton,
@@ -55,16 +49,7 @@ public class CreateMap extends AppCompatActivity {
         );
 
         binding.saveMapButton.setEnabled(anySettingsComplete);
-        binding.previewButton.setEnabled(allSettingsComplete);
-    }
-
-    private boolean areAllSettingsComplete(CreateMapSettingButton... buttons){
-        for (CreateMapSettingButton button : buttons){
-            if (!button.isSetting()){
-                return false;
-            }
-        }
-        return true;
+        binding.previewButton.setEnabled(binding.positionSettingButton.isSetting());
     }
 
     private boolean areAnySettingsComplete(CreateMapSettingButton... buttons){
