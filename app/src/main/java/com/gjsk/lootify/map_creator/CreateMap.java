@@ -81,6 +81,12 @@ public class CreateMap extends BaseActivity {
         Dialog dialog = new Dialog(CreateMap.this);
 
         DialogBase dialogBase = new DialogBase(this);
+
+        dialogBase.setTitle("Treasure");
+        dialogBase.setDescription("Step1");
+        dialogBase.setIconVisibility(true);
+        dialogBase.setButtonsVisibility(false);
+
         dialog.setContentView(dialogBase);
 
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);

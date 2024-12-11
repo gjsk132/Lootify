@@ -19,13 +19,13 @@
             android:name=".history.GameHistory"
             android:exported="false" />
         <activity
-            android:name=".map_creator.CreateMap"
+            android:name=".title.StartTitle"
             android:exported="false" />
         <activity
             android:name=".title.Lobby"
             android:exported="false" />
         <activity
-            android:name=".title.StartTitle"
+            android:name=".map_creator.CreateMap"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
