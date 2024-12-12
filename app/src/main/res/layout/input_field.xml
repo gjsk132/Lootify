@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
             android:minHeight="48dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginHorizontal="16dp"
             android:layout_weight="5"
             android:background="@drawable/white_frame_low"
             android:hint="@string/description"
