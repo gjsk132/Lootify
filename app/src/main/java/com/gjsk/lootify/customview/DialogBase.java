@@ -87,13 +87,12 @@ public class DialogBase extends LinearLayout {
         addIcon.setVisibility(isAddIcon ? View.VISIBLE : View.GONE);
     }
 
-    public void setButtonsVisibility(boolean isButtons){
-        if(isButtons){
-            buttonLine.setVisibility(View.VISIBLE);
-            buttonContents.setVisibility(View.VISIBLE);
-        }else{
-            buttonLine.setVisibility(View.GONE);
-            buttonContents.setVisibility(View.GONE);
-        }
+    public void setButtonsVisibility(boolean isButtons) {
+        buttonLine.setVisibility(isButtons ? View.VISIBLE : View.GONE);
+        buttonContents.setVisibility(isButtons ? View.VISIBLE : View.GONE);
+    }
+
+    public FrameLayout getDialogContents() {
+        return dialogContents;
     }
 }
