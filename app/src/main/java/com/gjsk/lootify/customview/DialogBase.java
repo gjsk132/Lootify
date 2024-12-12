@@ -91,8 +91,4 @@ public class DialogBase extends LinearLayout {
         buttonLine.setVisibility(isButtons ? View.VISIBLE : View.GONE);
         buttonContents.setVisibility(isButtons ? View.VISIBLE : View.GONE);
     }
-
-    public FrameLayout getDialogContents() {
-        return dialogContents;
-    }
 }

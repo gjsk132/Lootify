@@ -53,6 +53,12 @@
         android:layout_gravity="center"
         android:layout_weight="1" />
 
+    <View
+        android:id="@+id/button_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/textLightColor" />
+
     <LinearLayout
         android:id="@+id/button_contents"
         android:layout_width="match_parent"

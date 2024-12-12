@@ -1,18 +1,12 @@
 package com.gjsk.lootify.recyclerview;
 
 public class Board {
-    private String type;
-    private String name;
-    private String detail;
+    private final String name;
+    private final String detail;
 
-    public Board(String type, String name, String detail, boolean isDelete){
-        this.type = type;
+    public Board(String name, String detail){
         this.name = name;
         this.detail = detail;
-    }
-
-    public String getType(){
-        return type;
     }
 
     public String getName(){

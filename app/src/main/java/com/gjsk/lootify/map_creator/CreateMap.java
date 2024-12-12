@@ -8,12 +8,19 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.gjsk.lootify.BaseActivity;
 import com.gjsk.lootify.R;
 import com.gjsk.lootify.customview.CreateMapSettingButton;
 import com.gjsk.lootify.customview.DialogBase;
 import com.gjsk.lootify.databinding.ActivityCreateMapBinding;
+import com.gjsk.lootify.recyclerview.Board;
+import com.gjsk.lootify.recyclerview.BoardAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class CreateMap extends BaseActivity {
@@ -80,15 +87,14 @@ public class CreateMap extends BaseActivity {
         return false;
     }
 
-    private void showCustomDialog(){
+    private void showCustomDialog() {
+
         Dialog dialog = new Dialog(CreateMap.this);
 
         DialogBase dialogBase = new DialogBase(this);
 
         FrameLayout dialogContents = dialogBase.findViewById(R.id.dialog_contents);
-        LinearLayout contents = (LinearLayout)  getLayoutInflater().inflate(R.layout.dialog_room_select, dialogContents, false);
-
-        dialogContents.addView(contents);
+        showSettingList(dialogContents);
 
         dialogBase.setTitle("Treasure");
         dialogBase.setDescription("Step1");
@@ -99,14 +105,38 @@ public class CreateMap extends BaseActivity {
 
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
 
-        if (dialog.getWindow() != null){
+        if (dialog.getWindow() != null) {
             dialog.getWindow().setLayout(
-                (int) (getResources().getDisplayMetrics().widthPixels * 0.8),
-                (int) (getResources().getDisplayMetrics().heightPixels * 0.6)
+                    (int) (getResources().getDisplayMetrics().widthPixels * 0.8),
+                    (int) (getResources().getDisplayMetrics().heightPixels * 0.6)
             );
         }
 
         dialog.setCancelable(true);
         dialog.show();
+    }
+
+    private void showSettingList(FrameLayout dialogContents){
+        List<Board> datas = new ArrayList<>();
+        datas.add(new Board("BOMUL (1)", "엄청난 보물입니다!"));
+        datas.add(new Board("Jewel (ALL)", "반짝반짝 빛나는 보석!"));
+        datas.add(new Board("BOMUL (1)", "엄청난 보물입니다!"));
+        datas.add(new Board("Jewel (ALL)", "반짝반짝 빛나는 보석!"));
+        datas.add(new Board("BOMUL (1)", "엄청난 보물입니다!"));
+        datas.add(new Board("Jewel (ALL)", "반짝반짝 빛나는 보석!"));
+        datas.add(new Board("BOMUL (1)", "엄청난 보물입니다!"));
+        datas.add(new Board("Jewel (ALL)", "반짝반짝 빛나는 보석!"));
+
+        BoardAdapter boardAdapter = new BoardAdapter(datas);
+
+        LinearLayout contents = (LinearLayout) getLayoutInflater()
+                .inflate(R.layout.dialog_setting_list, dialogContents, false);
+
+        RecyclerView itemRecyclerView = contents.findViewById(R.id.list_recycler_view);
+        itemRecyclerView.setAdapter(boardAdapter);
+        itemRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        dialogContents.addView(contents);
+
     }
 }
