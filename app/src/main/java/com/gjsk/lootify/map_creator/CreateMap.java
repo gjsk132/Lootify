@@ -4,9 +4,12 @@ import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.gjsk.lootify.BaseActivity;
+import com.gjsk.lootify.R;
 import com.gjsk.lootify.customview.CreateMapSettingButton;
 import com.gjsk.lootify.customview.DialogBase;
 import com.gjsk.lootify.databinding.ActivityCreateMapBinding;
@@ -81,6 +84,11 @@ public class CreateMap extends BaseActivity {
         Dialog dialog = new Dialog(CreateMap.this);
 
         DialogBase dialogBase = new DialogBase(this);
+
+        FrameLayout dialogContents = dialogBase.findViewById(R.id.dialog_contents);
+        LinearLayout contents = (LinearLayout)  getLayoutInflater().inflate(R.layout.dialog_room_select, dialogContents, false);
+
+        dialogContents.addView(contents);
 
         dialogBase.setTitle("Treasure");
         dialogBase.setDescription("Step1");
