@@ -1,13 +1,12 @@
 package com.gjsk.lootify.map_creator;
 
 import android.app.Dialog;
-import android.graphics.Color;
-import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -22,6 +21,7 @@ import com.gjsk.lootify.customview.SmallButton;
 import com.gjsk.lootify.databinding.ActivityCreateMapBinding;
 import com.gjsk.lootify.recyclerview.ARIconAdapter;
 import com.gjsk.lootify.recyclerview.Board;
+import com.gjsk.lootify.recyclerview.Treasure;
 import com.gjsk.lootify.recyclerview.BoardAdapter;
 
 import java.util.ArrayList;
@@ -36,6 +36,10 @@ public class CreateMap extends BaseActivity {
     private DialogBase dialogBase;
     private LinearLayout buttonContents;
 
+    private List<Treasure> treasures = new ArrayList<>();
+    private String currentTreasureName;
+    private int currentTreasureIconRes = -1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,13 +53,11 @@ public class CreateMap extends BaseActivity {
     private void initButtons() {
         binding.treasureSettingButton.setOnClickListener(view -> {
             showCustomDialog();
-            binding.treasureSettingButton.completeSetting();
             updateButtonStates();
         });
 
         binding.testSettingButton.setOnClickListener(view -> {
             if (binding.treasureSettingButton.isSetting()) {
-                binding.testSettingButton.completeSetting();
                 updateButtonStates();
             } else {
                 showToast("Treasure 먼저 생성하기!");
@@ -64,7 +66,6 @@ public class CreateMap extends BaseActivity {
 
         binding.positionSettingButton.setOnClickListener(view -> {
             if (binding.testSettingButton.isSetting()) {
-                binding.positionSettingButton.completeSetting();
                 updateButtonStates();
             } else {
                 showToast("Test 먼저 생성하기!");
@@ -122,6 +123,8 @@ public class CreateMap extends BaseActivity {
                 (int) (getResources().getDisplayMetrics().heightPixels * 0.6)
         );
 
+        dialog.setOnDismissListener(dialogInterface -> resetTreasureState());
+
         dialog.setCancelable(true);
         dialog.show();
     }
@@ -129,16 +132,24 @@ public class CreateMap extends BaseActivity {
     private void showSettingList() {
         dialogContents.removeAllViews();
 
-        List<Board> datas = new ArrayList<>();
-        datas.add(new Board("BOMUL (1)", "엄청난 보물입니다!"));
-        datas.add(new Board("Jewel (ALL)", "반짝반짝 빛나는 보석!"));
-
         LinearLayout contents = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_setting_list, dialogContents, false);
         dialogContents.addView(contents);
 
         RecyclerView recyclerView = contents.findViewById(R.id.list_recycler_view);
 
-        recyclerView.setAdapter(new BoardAdapter(datas));
+        List<Board> boards = new ArrayList<>();
+        for (Treasure treasure : treasures){
+            boards.add(new Board(treasure.getName(), "선택된 아이콘: " + treasure.getIconRes()));
+        }
+
+        BoardAdapter adapter = new BoardAdapter(boards, binding.treasureSettingButton);
+
+        adapter.setOnItemDeletedListener(position -> {
+            treasures.remove(position);
+            adapter.notifyItemRemoved(position);
+        });
+
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         dialogBase.setIconVisibility(true);
@@ -151,7 +162,34 @@ public class CreateMap extends BaseActivity {
         LinearLayout contents = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_treasure_info, dialogContents, false);
         dialogContents.addView(contents);
 
-        addButtons(this::showSettingList, this::showIconSelect);
+        EditText treasureNameInput = contents.findViewById(R.id.user_input);
+
+        if (currentTreasureName != null){
+            treasureNameInput.setText(currentTreasureName);
+        }
+
+        buttonContents.removeAllViews();
+
+        SmallButton beforeButton = new SmallButton(this);
+        beforeButton.setText("BEFORE");
+        beforeButton.setOnClickListener(view -> showSettingList());
+
+        SmallButton nextButton = new SmallButton(this);
+        nextButton.setText("NEXT");
+        nextButton.setOnClickListener(view-> {
+            currentTreasureName = treasureNameInput.getText().toString().trim();
+            if (currentTreasureName.isEmpty()){
+                showToast("보물 이름을 입력하세요.");
+            }else{
+                showIconSelect();
+            }
+        });
+
+        buttonContents.addView(beforeButton);
+        buttonContents.addView(nextButton);
+
+        dialogBase.setIconVisibility(false);
+        dialogBase.setButtonsVisibility(true);
     }
 
     private void showIconSelect(){
@@ -165,35 +203,109 @@ public class CreateMap extends BaseActivity {
         dialogContents.addView(contents);
 
         RecyclerView recyclerView = contents.findViewById(R.id.ar_icon_recycler_view);
+        ARIconAdapter adapter = new ARIconAdapter(iconList);
 
-        recyclerView.setAdapter(new ARIconAdapter(iconList));
+        if (currentTreasureIconRes == -1){
+            currentTreasureIconRes = iconList.get(0);
+        }
+        adapter.setSelectedIcon(currentTreasureIconRes);
+
+        recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        addButtons(this::showCreateTreasure, this::showCheckTreasure);
+        adapter.setOnItemClickListener(iconRes->{
+            currentTreasureIconRes = iconRes;
+        });
 
-    }
-
-    private void showCheckTreasure(){
-        dialogContents.removeAllViews();
-
-        addButtons(this::showIconSelect, this::showSettingList);
-    }
-
-    private void addButtons(Runnable onBack, Runnable onNext) {
         buttonContents.removeAllViews();
 
         SmallButton beforeButton = new SmallButton(this);
         beforeButton.setText("BEFORE");
-        beforeButton.setOnClickListener(view -> onBack.run());
+        beforeButton.setOnClickListener(view -> showCreateTreasure());
 
         SmallButton nextButton = new SmallButton(this);
         nextButton.setText("NEXT");
-        nextButton.setOnClickListener(view-> onNext.run());
+        nextButton.setOnClickListener(view-> showCheckTreasure());
 
         buttonContents.addView(beforeButton);
         buttonContents.addView(nextButton);
 
         dialogBase.setIconVisibility(false);
         dialogBase.setButtonsVisibility(true);
+
+    }
+
+    private void showCheckTreasure(){
+        dialogContents.removeAllViews();
+
+        LinearLayout contents = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_treasure_check, dialogContents, false);
+        dialogContents.addView(contents);
+
+        TextView nameView = contents.findViewById(R.id.name);
+        ImageView iconView = contents.findViewById(R.id.img);
+
+        nameView.setText(currentTreasureName);
+        if (currentTreasureIconRes != -1){
+            iconView.setImageResource(currentTreasureIconRes);
+        }
+
+        buttonContents.removeAllViews();
+
+        SmallButton beforeButton = new SmallButton(this);
+        beforeButton.setText("BEFORE");
+        beforeButton.setOnClickListener(view -> showIconSelect());
+
+        SmallButton nextButton = new SmallButton(this);
+        nextButton.setText("NEXT");
+        nextButton.setOnClickListener(view-> {
+            saveTreasure();
+            showSettingList();
+        });
+
+        buttonContents.addView(beforeButton);
+        buttonContents.addView(nextButton);
+
+        dialogBase.setIconVisibility(false);
+        dialogBase.setButtonsVisibility(true);
+    }
+
+    private void saveTreasure() {
+        if (currentTreasureName != null && currentTreasureIconRes != -1){
+            treasures.add(new Treasure(currentTreasureName, currentTreasureIconRes));
+            currentTreasureName = null;
+            currentTreasureIconRes = -1;
+            updateRecyclerView();
+        }else{
+            showToast("데이터를 완성하세요.");
+        }
+    }
+
+    private void updateRecyclerView() {
+        dialogContents.removeAllViews();
+
+        LinearLayout contents = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_setting_list, dialogContents, false);
+        dialogContents.addView(contents);
+
+        RecyclerView recyclerView = contents.findViewById(R.id.list_recycler_view);
+
+        List<Board> boards = new ArrayList<>();
+        for (Treasure treasure : treasures) {
+            boards.add(new Board(treasure.getName(), "선택된 아이콘: " + treasure.getIconRes()));
+        }
+
+        BoardAdapter adapter = new BoardAdapter(boards, binding.treasureSettingButton);
+
+        adapter.setOnItemDeletedListener(position -> {
+            treasures.remove(position);
+            adapter.notifyItemRemoved(position);
+        });
+
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private void resetTreasureState(){
+        currentTreasureName = null;
+        currentTreasureIconRes = -1;
     }
 }

@@ -7,19 +7,23 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gjsk.lootify.R;
+import com.gjsk.lootify.customview.CreateMapSettingButton;
 
 import java.util.List;
 
 public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHolder> {
 
     private final List<Board> dataList;
+    private OnItemDeletedListener onItemDeletedListener;
+    private final CreateMapSettingButton settingButton;
 
-    public BoardAdapter(List<Board> dataList) {
+    public BoardAdapter(List<Board> dataList, CreateMapSettingButton settingButton) {
         this.dataList = dataList;
+        this.settingButton = settingButton;
+        updateButtonCount();
     }
 
     @NonNull
@@ -48,6 +52,25 @@ public class BoardAdapter extends RecyclerView.Adapter<BoardAdapter.BoardViewHol
         dataList.remove(position);
         notifyItemRemoved(position);
         notifyItemRangeChanged(position, dataList.size());
+
+        updateButtonCount();
+
+        if(onItemDeletedListener !=null){
+            onItemDeletedListener.onItemDeleted(position);
+        }
+    }
+
+    public void setOnItemDeletedListener(OnItemDeletedListener listener) {
+        this.onItemDeletedListener = listener;
+    }
+
+
+    public interface OnItemDeletedListener {
+        void onItemDeleted(int position);
+    }
+
+    private void updateButtonCount(){
+        settingButton.updateCount(dataList.size());
     }
 
     public static class BoardViewHolder extends RecyclerView.ViewHolder {

@@ -100,9 +100,8 @@ public class CreateMapSettingButton extends LinearLayout {
         }
     }
 
-    public void completeSetting(){
-        count++;
-        setCount(count);
+    public void updateCount(int newCount){
+        setCount(newCount);
     }
     
     public boolean isSetting(){

@@ -14,10 +14,26 @@ import java.util.List;
 
 public class ARIconAdapter extends RecyclerView.Adapter<ARIconAdapter.ARIconViewHolder> {
     private final List<Integer> iconList;
-    private int selectedPosition = -1;
+    private int selectedPosition = 0;
 
     public ARIconAdapter(List<Integer> iconList) {
         this.iconList = iconList;
+    }
+
+    public OnItemClickListener onItemClickListener;
+
+    public void setOnItemClickListener(OnItemClickListener listener){
+        this.onItemClickListener = listener;
+    }
+
+    public void setSelectedIcon(int iconRes){
+        if (iconList.contains(iconRes)){
+            selectedPosition = iconList.indexOf(iconRes);
+        }else{
+            selectedPosition = -1;
+        }
+        selectedPosition = iconList.indexOf(iconRes);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -39,18 +55,22 @@ public class ARIconAdapter extends RecyclerView.Adapter<ARIconAdapter.ARIconView
         }
 
         holder.itemView.setOnClickListener(view -> {
-            int currentPosition = holder.getAdapterPosition();
-            if (currentPosition == RecyclerView.NO_POSITION) {
-                return;
-            }
             int previousPosition = selectedPosition;
-            selectedPosition = currentPosition;
+            selectedPosition = holder.getAdapterPosition();
 
             if (previousPosition != RecyclerView.NO_POSITION) {
                 notifyItemChanged(previousPosition);
             }
             notifyItemChanged(selectedPosition);
+
+            if (onItemClickListener != null){
+                onItemClickListener.onItemClick(iconRes);
+            }
         });
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(int iconRes);
     }
 
     @Override
