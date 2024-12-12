@@ -1,16 +1,19 @@
 package com.gjsk.lootify.map_creator;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.widget.Toast;
 
-import com.gjsk.lootify.R;
+import com.gjsk.lootify.BaseActivity;
 import com.gjsk.lootify.customview.CreateMapSettingButton;
-import com.gjsk.lootify.customview.SmallButton;
+import com.gjsk.lootify.customview.DialogBase;
 import com.gjsk.lootify.databinding.ActivityCreateMapBinding;
 
-public class CreateMap extends AppCompatActivity {
+import java.util.Objects;
+
+public class CreateMap extends BaseActivity {
 
     private ActivityCreateMapBinding binding;
 
@@ -26,18 +29,31 @@ public class CreateMap extends AppCompatActivity {
         CreateMapSettingButton positionSettingButton = binding.positionSettingButton;
 
         treasureSettingButton.setOnClickListener(view ->{
+
+            showCustomDialog();
+
             treasureSettingButton.completeSetting();
             updateButtonStates();
         });
 
         testSettingButton.setOnClickListener(view ->{
-            testSettingButton.completeSetting();
-            updateButtonStates();
+            if (treasureSettingButton.isSetting()){
+                testSettingButton.completeSetting();
+                updateButtonStates();
+            }else{
+                Toast toast = Toast.makeText(getApplicationContext(), "Treasure 먼저 생성하기!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
         });
 
         positionSettingButton.setOnClickListener(view -> {
-            positionSettingButton.completeSetting();
-            updateButtonStates();
+            if (testSettingButton.isSetting()) {
+                positionSettingButton.completeSetting();
+                updateButtonStates();
+            }else{
+                Toast toast = Toast.makeText(getApplicationContext(), "Test 먼저 생성하기!", Toast.LENGTH_SHORT);
+                toast.show();
+            }
         });
     }
 
@@ -59,5 +75,30 @@ public class CreateMap extends AppCompatActivity {
             }
         }
         return false;
+    }
+
+    private void showCustomDialog(){
+        Dialog dialog = new Dialog(CreateMap.this);
+
+        DialogBase dialogBase = new DialogBase(this);
+
+        dialogBase.setTitle("Treasure");
+        dialogBase.setDescription("Step1");
+        dialogBase.setIconVisibility(true);
+        dialogBase.setButtonsVisibility(false);
+
+        dialog.setContentView(dialogBase);
+
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
+
+        if (dialog.getWindow() != null){
+            dialog.getWindow().setLayout(
+                (int) (getResources().getDisplayMetrics().widthPixels * 0.8),
+                (int) (getResources().getDisplayMetrics().heightPixels * 0.6)
+            );
+        }
+
+        dialog.setCancelable(true);
+        dialog.show();
     }
 }

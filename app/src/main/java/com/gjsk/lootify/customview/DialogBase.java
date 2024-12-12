@@ -75,19 +75,19 @@ public class DialogBase extends LinearLayout {
         typedArray.recycle();
     }
 
-    private void setTitle(String text){
+    public void setTitle(String text){
         subTitle.setText(text);
     }
 
-    private void setDescription(String text){
+    public void setDescription(String text){
         description.setText(text);
     }
 
-    private void setIconVisibility(boolean isAddIcon){
+    public void setIconVisibility(boolean isAddIcon){
         addIcon.setVisibility(isAddIcon ? View.VISIBLE : View.GONE);
     }
 
-    private void setButtonsVisibility(boolean isButtons){
+    public void setButtonsVisibility(boolean isButtons){
         if(isButtons){
             buttonLine.setVisibility(View.VISIBLE);
             buttonContents.setVisibility(View.VISIBLE);

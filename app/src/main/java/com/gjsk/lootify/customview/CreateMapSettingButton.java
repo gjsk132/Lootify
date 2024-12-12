@@ -106,6 +106,6 @@ public class CreateMapSettingButton extends LinearLayout {
     }
     
     public boolean isSetting(){
-        return (count == 0 ? false : true);
+        return (count != 0);
     }
 }

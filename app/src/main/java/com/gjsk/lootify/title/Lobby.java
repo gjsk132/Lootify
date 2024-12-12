@@ -1,7 +1,5 @@
 package com.gjsk.lootify.title;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
@@ -9,6 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.gjsk.lootify.BaseActivity;
 import com.gjsk.lootify.R;
 import com.gjsk.lootify.customview.DialogBase;
 import com.gjsk.lootify.customview.SmallButton;
@@ -17,7 +16,7 @@ import com.gjsk.lootify.history.GameHistory;
 import com.gjsk.lootify.map_creator.CreateMap;
 import com.gjsk.lootify.map_creator.MyMays;
 
-public class Lobby extends AppCompatActivity {
+public class Lobby extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
