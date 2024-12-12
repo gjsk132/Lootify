@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.PaintDrawable;
 import android.os.Bundle;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -15,6 +16,7 @@ import com.gjsk.lootify.BaseActivity;
 import com.gjsk.lootify.R;
 import com.gjsk.lootify.customview.CreateMapSettingButton;
 import com.gjsk.lootify.customview.DialogBase;
+import com.gjsk.lootify.customview.SmallButton;
 import com.gjsk.lootify.databinding.ActivityCreateMapBinding;
 import com.gjsk.lootify.recyclerview.Board;
 import com.gjsk.lootify.recyclerview.BoardAdapter;
@@ -101,6 +103,12 @@ public class CreateMap extends BaseActivity {
         dialogBase.setIconVisibility(true);
         dialogBase.setButtonsVisibility(false);
 
+        dialogBase.findViewById(R.id.icon).setOnClickListener(view -> {
+            Toast.makeText(getApplicationContext(), "보물 만들기!", Toast.LENGTH_SHORT).show();
+            dialogContents.removeAllViews();
+            showCreateTreasure(dialogBase, dialogContents);
+        });
+
         dialog.setContentView(dialogBase);
 
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
@@ -137,6 +145,30 @@ public class CreateMap extends BaseActivity {
         itemRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         dialogContents.addView(contents);
+    }
 
+    private void showCreateTreasure(DialogBase dialogBase, FrameLayout dialogContents){
+        LinearLayout contents = (LinearLayout) getLayoutInflater().inflate(R.layout.dialog_treasure_info, dialogContents, false);
+        dialogContents.addView(contents);
+
+        LinearLayout buttonContents = dialogBase.findViewById(R.id.button_contents);
+        addButtons(buttonContents);
+
+        dialogBase.setIconVisibility(false);
+        dialogBase.setButtonsVisibility(true);
+    }
+
+    private void addButtons(LinearLayout buttonContents) {
+
+        SmallButton beforeButton = new SmallButton(this);
+        beforeButton.setText("BEFORE");
+        beforeButton.setEnabled(true);
+
+        SmallButton nextButton = new SmallButton(this);
+        nextButton.setText("NEXT");
+        nextButton.setEnabled(true);
+
+        buttonContents.addView(beforeButton);
+        buttonContents.addView(nextButton);
     }
 }

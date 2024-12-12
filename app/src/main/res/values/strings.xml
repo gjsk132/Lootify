@@ -5,4 +5,7 @@
     <string name="description">null</string>
     <string name="sub_title">Sub Title</string>
     <string name="number">num</string>
+    <string name="question">question</string>
+    <string name="required"> *</string>
+    <string name="hint">hint</string>
 </resources>

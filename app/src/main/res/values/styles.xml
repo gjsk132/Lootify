@@ -1,28 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="small_button_text">
         <item name="android:fontFamily">@font/inria_sans</item>
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/textBasicColor</item>
     </style>
+
     <style name="big_button_text">
         <item name="android:fontFamily">@font/inria_sans</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/textBasicColor</item>
     </style>
+
     <style name="subTitle">
         <item name="android:fontFamily">@font/inria_sans</item>
         <item name="android:textSize">25sp</item>
         <item name="android:textColor">@color/textBasicColor</item>
     </style>
+
     <style name="contents">
         <item name="android:fontFamily">@font/inria_sans</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/textBasicColor</item>
     </style>
+
     <style name="contents_detail">
         <item name="android:fontFamily">@font/inria_sans</item>
         <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/textBasicColor</item>
+    </style>
+
+    <style name="question">
+        <item name="android:fontFamily">@font/inria_sans</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/textBasicColor</item>
+    </style>
+
+    <style name="required_field_indicator">
+        <item name="android:fontFamily">@font/inria_sans</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+    <style name="answer">
+        <item name="android:fontFamily">@font/inria_sans</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/textBasicColor</item>
     </style>
 </resources>

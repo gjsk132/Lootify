@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.gjsk.lootify.customview.InputField
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="Enter Name"
+                app:is_required="true"
+                app:question="Name" />
+
+            <com.gjsk.lootify.customview.InputField
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="Enter Description"
+                app:is_required="true"
+                app:question="Desc" />
+
+            <com.gjsk.lootify.customview.InputField
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="Select Image"
+                app:is_required="false"
+                app:question="Image" />
+
+            <com.gjsk.lootify.customview.InputField
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="Default All"
+                app:is_required="false"
+                app:question="Limit" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
